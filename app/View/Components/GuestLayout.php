@@ -2,7 +2,9 @@
 
 namespace App\View\Components;
 
-use Component;
+
+// use Component;
+use Illuminate\View\Component;
 use Illuminate\View\View;
 
 class GuestLayout extends Component

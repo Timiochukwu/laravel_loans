@@ -42,6 +42,7 @@ class AdminController extends Controller
         $user->phone = $request->phone;
         $user->save();
 
+        toastr()->success('Profile has been updated succesfully!', 'Congrats');
         return redirect()->back();
     }
 
@@ -50,6 +51,8 @@ class AdminController extends Controller
         return view('admin.password.view');
 
     }
+
+    
     public function storePassword(Request $request)
     {
         $request->validate([
@@ -65,4 +68,6 @@ class AdminController extends Controller
         return redirect()->back();
 
     }
+
+    
 }

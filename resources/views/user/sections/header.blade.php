@@ -61,19 +61,15 @@
                     <h1 class="text-2xl font semibold">User Dashboard </h1>
                     <ul class="mt-8">
                         <li class="my-3">
-                            <a href="#" class="flex items-center text-gray-300 hover:">
+                            <a href="{{route('user.dashboard')}}" class="flex items-center text-gray-300 hover:">
                                 Dashboard
                             </a>
                         </li>
-                        <li class="my-3">
-                            <a href="#" class="flex items-center text-gray-300 hover:">
-                                User
-                            </a>
-                        </li>
+                       
                         <li class="my-3">
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" class="flex items-center text-gray-300 hover:text-white">
-                                    User
+                                    Loan Management
                                     <svg x-show="!open" class="ml auto h-5 w-5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stoke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,28 +82,7 @@
                                     </svg>
                                 </button>
                                 <ul class="ml-4 mt-2 space-y-2">
-                                    <li><a href="" class="text-gray-300 hover:text-white">All Users</a></li>
-                                    <li><a href="" class="text-gray-300 hover:text-white">Add Products</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="my-3">
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="flex items-center text-gray-300 hover:text-white">
-                                    Products
-                                    <svg x-show="!open" class="ml auto h-5 w-5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stoke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                    <svg x-show="open" class="ml auto h-5 w-5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stoke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 15l7-7  7 7"></path>
-                                    </svg>
-                                </button>
-                                <ul class="ml-4 mt-2 space-y-2">
-                                    <li><a href="" class="text-gray-300 hover:text-white">All Products</a></li>
+                                    <li><a href="{{route('user.apply.loan')}}" class="text-gray-300 hover:text-white">Apply For Loan</a></li>
                                     <li><a href="" class="text-gray-300 hover:text-white">Add Products</a></li>
                                 </ul>
                             </div>

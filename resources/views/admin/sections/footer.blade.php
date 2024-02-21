@@ -8,7 +8,10 @@
 
 </div>
 
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
 <script>
     const profileButton = document.getElementById('profileButton');
     const profileDropdown = document.getElementById('profileDropdown");
@@ -26,8 +29,6 @@
 
 <script>
     function previewImage() {
-console.log("I GOT GERE")
-
         const fileInput = document.getElementById('profileImage');
         const imagePreview = document.getElementById('selectedImage');
         const profilePreview = document.getElementById('profilePreview');
@@ -46,6 +47,63 @@ console.log("I GOT GERE")
 
     }
 </script>
+
+<script>
+
+
+    function confirmDelete(userId) {
+console.log("I GOT HERE")
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form'+ userId).submit();
+
+                Swal.fire({                    
+                    title: "Deleted!",
+                    text: "This User has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
+</script>
+
+
+<script>
+
+function confirmDeleteLoanType(loanTypeId) {
+    Swal.fire({
+            title: "Confirm Delete?",
+            text: "Are you sure you want to delete this loan type?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm'+ loanTypeId).submit();
+
+                Swal.fire({                    
+                    title: "Deleted!",
+                    text: "This User has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
+</script>
+
 
 
 </body>

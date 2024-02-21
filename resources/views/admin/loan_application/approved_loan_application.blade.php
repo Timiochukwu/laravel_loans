@@ -53,56 +53,53 @@
 
 <div class="p-6">
     <div class="bg-white shadow-nd rounded-lg p-4">
-        <h2 class="text-2x1 font-semibold mb-4">User Management </h2>
+        <h2 class="text-2x1 font-semibold mb-4">Loan Application Management </h2>
         <div class="overflow-x-auto">
             <table class="min-w-full table-auto border">
                 <thead>
                     <tr class="bg-gray-200">
-                        <th class="py-2 px-4">Serial Number</th>
+                        <th class="py-2 px-4">S/N</th>
                         <th class="py-2 px-4">Name</th>
                         <th class="py-2 px-4">Email</th>
-                        <th class="py-2 px-4">User Type</th>
-                        <th class="py-2 px-4">Make Admin</th>
+                        <th class="py-2 px-4">Amout </th>
+                        <th class="py-2 px-4">Bank</th>
+                        <th class="py-2 px-4">Account Number</th>
+                        <!-- <th class="py-2 px-4">Installment Amount</th>
+                        <th class="py-2 px-4">Amount Payable</th> -->
+                        <th class="py-2 px-4">Approved Loan</th>
                         <th class="py-2 px-4">Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($users as $key => $userValue)
+                    @foreach ($loanApply as $loanApplyKey => $loanApplyValue)
 
                     <tr>
-                        <td class="py-2 px-4">{{$key + 1}}</td>
-                        <td class="py-2 px-4">{{$userValue['name']}}</td>
-                        <td class="py-2 px-4">{{$userValue['email']}}</td>
-                        <td class="py-2 px-4">{{$userValue->role}}</td>
+                        <td class="py-2 px-4">{{$loanApplyKey + 1}}</td>
+                        <td class="py-2 px-4">{{$loanApplyValue ->name}}</td>
+                        <td class="py-2 px-4">{{$loanApplyValue ->email }}</td>
+                        <td class="py-2 px-4">{{$loanApplyValue->amount}}</td>
+                        <td class="py-2 px-4">{{$loanApplyValue->bank}}</td>
+                        <!-- <td class="py-2 px-4">{{$loanApplyValue->account_number}}</td>
+                        <td class="py-2 px-4">{{$loanApplyValue->installment_count}}</td> -->
+                        <td class="py-2 px-4">{{$loanApplyValue->amount_payable}}</td>
                         <td class="py-2 px-4">
-                            <form action="{{route('toggle.user.role', $userValue->id )}}" method="POST">
+                            <form action="{{route('toggle.loan.status', $loanApplyValue->id )}}" method="POST">
                                 @csrf
                                 <label class="switch">
-                                    <input type="checkbox"  onchange="this.form.submit()" name="role" {{($userValue->role
-                                    === 'admin') ? 'checked' : ''
+                                    <input type="checkbox"  onchange="this.form.submit()" name="status" {{($loanApplyValue->status
+                                    === 'approved') ? 'checked' : ''
                                     }} >
                                     <span class="slider"></span>
                                 </label>
                             </form>
                         </td>
                         <td class="py-2 px-4">
-                            <a href="{{route('user.details', $userValue->id)}}"
+                            <a href="{{route('user.loan.details', $loanApplyValue->id)}}"
                                 class="bg-blue-500 text-white py-1 px-3 rounded-nd hover:bg-blue-600 transition duration-200">
                                 View Details
                             </a>
-
-                            <button type="submit" onclick="confirmDelete({{$userValue->id}})"
-                                class="bg-red-500 text-white py-1 px-3 rounded-nd hover:bg-red-600 transition duration-200 ">
-                                Delete
-                            </button>
-                            <form action="{{route('admin.delete.users', $userValue->id)}}"
-                                id="delete-form{{$userValue->id}}">
-                                @csrf
-                                @method('DELETE')
-
-                            </form>
-                        </td>
+                                </td>
                     </tr>
                     @endforeach
 
